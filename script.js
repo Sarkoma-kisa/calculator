@@ -2,6 +2,7 @@ const display = document.getElementById('display')
 const numbersBtn = document.querySelectorAll('[data-number]')
 const operatorsBtn = document.querySelectorAll('[data-operator]')
 const equalsBtn = document.querySelector('[data-equals]')
+const clearBtn = document.getElementById('clear')
 
 let firstNum
 let secondNum
@@ -27,6 +28,8 @@ operatorsBtn.forEach(operator => operator.addEventListener('click', () => {
 }))
 
 equalsBtn.addEventListener('click', () => operate(firstNum, secondNum, mathOperator))
+
+clearBtn.addEventListener('click', () => resetBtn())
 
 function add (a, b) {
   return a + b
@@ -62,4 +65,11 @@ function operate (a, b, operator) {
       return display.textContent = 'ERROR'
       break
   }
+}
+
+function resetBtn () {
+  display.textContent = ''
+  firstNum = undefined
+  secondNum = undefined
+  mathOperator = undefined
 }
